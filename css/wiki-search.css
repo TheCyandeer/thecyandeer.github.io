@@ -1,0 +1,160 @@
+/* Wiki Search Styles */
+.wiki-search-container {
+    position: relative;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#wiki-search-input {
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 14px;
+    width: 200px;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-family: inherit;
+}
+
+#wiki-search-input:focus {
+    width: 250px;
+    outline: none;
+    border-color: #8da4b8;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(141, 164, 184, 0.3);
+}
+
+#wiki-search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 300px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    margin-top: 8px;
+}
+
+.search-result-item {
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    transition: background 0.2s;
+    text-align: left;
+}
+
+.search-result-item a:hover {
+    background-color: #f9f9f9;
+}
+
+.search-result-title {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: #2c3e50;
+}
+
+.search-result-snippet {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.4;
+    word-break: break-all;
+}
+
+.search-highlight {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 0 2px;
+    border-radius: 2px;
+}
+
+.search-loading, .search-error {
+    padding: 15px;
+    text-align: center;
+    color: #999;
+    font-size: 13px;
+}
+
+.search-no-results {
+    padding: 30px 20px;
+    text-align: center;
+    color: #8da4b8;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-no-results::before {
+    content: "🍂";
+    font-size: 32px;
+    margin-bottom: 8px;
+    opacity: 0.6;
+}
+
+/* Mobile adjustments */
+@media (max-width: 800px) {
+    .wiki-search-container {
+        display: none;
+    }
+    
+    .wiki-search-container-mobile {
+        display: block;
+        padding: 0 0 15px 0;
+        margin-bottom: 10px;
+        /* background-color: transparent; Remove header-style background */
+        /* border-bottom: none; Remove header-style border */
+    }
+    
+    #wiki-search-input-mobile {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        font-size: 14px;
+        box-sizing: border-box;
+        font-family: inherit;
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+    
+    #wiki-search-input-mobile:focus {
+        outline: none;
+        border-color: #8da4b8;
+        background-color: #fff;
+    }
+    
+    #wiki-search-results-mobile {
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        max-height: 40vh;
+        overflow-y: auto;
+        display: none;
+        margin-top: 5px;
+        position: relative; /* Inside sidebar flow */
+        z-index: 2001;
+    }
+}
+
+@media (min-width: 801px) {
+    .wiki-search-container-mobile {
+        display: none;
+    }
+}

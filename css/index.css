@@ -1,0 +1,390 @@
+/* Index Page Specific Styles */
+
+.container {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+}
+
+/* Overlay Layer Structure */
+.left-overlay-layer {
+    grid-column: 1;
+    grid-row: 1;
+    /* position: sticky; removed to allow scrolling */
+    /* top: 7rem; removed */
+    height: fit-content;
+    z-index: 20; /* Layer: Top (main-a) */
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-image-placeholder {
+    width: 122%;
+    height: 500px;
+    margin-top: 1rem;
+    position: relative;
+    /* This mimics .hero-image dimensions to position the overlay correctly */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: left bottom;
+    display: block;
+}
+
+/* 左侧区域 */
+.left-section {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    /* position: sticky; removed to allow scrolling */
+    /* top: 7rem; removed */
+    height: fit-content;
+    z-index: 1; /* Layer: Bottom (main-b) */
+}
+
+.hero-image {
+    width: 122%;
+    height: 500px;
+    margin-top: 1rem;
+    background-color: transparent; /* Fixed empty value */
+    border-radius: 4px;
+    position: relative;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: left bottom;
+    display: block;
+}
+
+/* Remove old styles no longer needed */
+/* .hero-image .hero-overlay was removed */
+
+.intro-box {
+    background-color: #447593;
+    color: #CFD9E3;
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding: 0.2rem 0.4rem;
+    line-height: 1.2;
+    margin-top: 0rem;
+    margin-right: -3rem;
+    margin-bottom: -1rem;
+    width: fit-content;
+}
+
+/* 右侧区域 */
+.right-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: relative;
+}
+
+.title-block {
+    background-color: #17223F;
+    color: #D6B2A2;
+    padding: 0.2rem 0.4rem;
+    font-size: 6.5rem;
+    font-weight: 900;
+    text-align: right;
+    width: fit-content;
+    margin-left: auto;
+    margin-top: 7.4rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.2;
+    transition: opacity 0.5s ease-in-out;
+    border-radius: 3px;
+    text-decoration: none;
+    display: block;
+}
+
+.subtitle-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.8rem;
+    margin-top: 1rem;
+    transition: opacity 0.5s ease-in-out;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+.subtitle {
+    background-color: #447593;
+    color: #CFD9E3;
+    padding: 0.2rem 0.5rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: right;
+    width: fit-content;
+    line-height: 1.2;
+    margin-top: -0.2rem;
+}
+
+.right-hero {
+    position: relative;
+    width: 100%;
+    height: 500px;
+}
+
+.right-hero .title-block,
+.right-hero .subtitle-block {
+    position: relative;
+    z-index: 10; /* Ensure text is above carousel (z-index 5) */
+}
+
+.right-image {
+    position: absolute;
+    top: 1rem;
+    left: -21%;
+    width: 121%;
+    height: 500px;
+    overflow: hidden;
+    z-index: 5; /* Layer: Middle (carousel) */
+}
+
+/* Underlay Image (rmain-0) */
+.right-underlay-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+    z-index: -1; /* Place behind carousel images */
+    display: block;
+}
+
+.right-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+    display: block;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Carousel */
+.carousel-controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.carousel-btn {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid #c1c1c1;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(23, 34, 63, 0.5);
+}
+
+.carousel-btn.active {
+    background-color: #17223F;
+    transform: scale(1.2);
+}
+
+
+.carousel-wrapper {
+    display: grid;
+    grid-template-areas: "stack";
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-wrapper img {
+    grid-area: stack;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: block;
+    object-fit: contain;
+    object-position: bottom center;
+}
+
+.carousel-wrapper img.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* Footer Info */
+.footer-info {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-title {
+    text-align: right;
+    font-size: 2rem;
+    color: #17223F;
+    padding-bottom: 0.5rem;
+    margin-top: 0rem;
+    margin-left: 12rem;
+    border-bottom: 1px solid #999;
+    font-weight: 900;
+}
+
+.social-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.2rem;
+    font-size: 1.8rem;
+    margin-top: -0.3rem;
+    color: #002b49;
+}
+
+/* 手机端适配 */
+@media (max-width: 800px) {
+    .left-overlay-layer {
+        width: 100%;
+        align-items: center;
+    }
+
+    .hero-image-placeholder {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1/0.8;
+    }
+
+    .left-section {
+        width: 100%;
+        align-items: center;
+    }
+
+    .hero-image {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1/0.8;
+    }
+
+    .intro-box {
+        margin-right: 0;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .right-section {
+        width: 100%;
+        padding-top: 1rem;
+    }
+
+    .right-hero {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .right-image {
+        position: relative;
+        left: 0;
+        width: 100%;
+        height: auto;
+        margin-bottom: 2rem;
+    }
+
+    .title-block {
+        margin: 2rem auto;
+        font-size: 4rem;
+        text-align: center;
+    }
+
+    .subtitle-block {
+        align-items: center;
+        width: 100%;
+    }
+
+    .subtitle {
+        text-align: center;
+        width: auto;
+    }
+
+    .footer-info {
+        width: 100%;
+        align-items: center;
+    }
+
+    .footer-title {
+        margin-left: 0;
+        text-align: center;
+        width: 100%;
+        border-bottom: none;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #999;
+    }
+
+    .social-links {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+/* Dark Mode Styles */
+body.dark-mode .intro-box {
+    background-color: #447593;
+    color: #e0e0e0;
+}
+
+body.dark-mode .title-block {
+    background-color: #447593;
+    color: #e0e0e0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .subtitle {
+    background-color: #447593;
+    color: #e0e0e0;
+}
+
+body.dark-mode .footer-title {
+    color: #DFDFD9;
+    border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+
+body.dark-mode .social-links svg path {
+    fill: #DFDFD9;
+    transition: fill 0.3s;
+}
+
+body.dark-mode .social-links a:hover svg path {
+    fill: #4a90e2;
+}
+
+body.dark-mode .carousel-btn {
+    border-color: #666;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .carousel-btn:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+body.dark-mode .carousel-btn.active {
+    background-color: #DFDFD9;
+    border-color: #DFDFD9;
+}

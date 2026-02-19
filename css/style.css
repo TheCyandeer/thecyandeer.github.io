@@ -1,0 +1,482 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Serif SC", "Source Han Serif CN", "Microsoft Yahei", sans-serif;
+}
+
+body {
+    background-color: #f2ece0;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Container Base */
+.container {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    gap: 2rem;
+    margin-top: 6rem;
+    padding: 0 1rem;
+    padding-bottom: 4rem;
+}
+
+/* Header Styles */
+.page-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+    background-color: #f2ece0;
+    padding-bottom: 1rem;
+}
+
+.header-content {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 1rem;
+}
+
+.menu-btn {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 2000;
+}
+
+.menu-btn.active {
+    transform: rotate(90deg);
+}
+
+.menu-btn span {
+    width: 100%;
+    height: 4px;
+    background-color: #17223F;
+}
+
+/* Menu Overlay */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(242, 236, 224, 0.98);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.menu-nav {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+.menu-nav li {
+    margin: 2rem 0;
+}
+
+.menu-nav a {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #17223F;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.menu-nav a:hover {
+    color: #447593;
+}
+
+/* Header Info */
+.header-info {
+    text-align: right;
+}
+
+.header-info a {
+    text-decoration: none;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.header-info a:hover {
+    opacity: 0.7;
+}
+
+.header-info h1 {
+    font-size: 1.4rem;
+    margin-top: -0.2rem;
+    font-weight: 1000;
+    color: #17223F;
+}
+
+.header-info p {
+    font-size: 0.74rem;
+    font-weight: 900;
+    margin-top: -0.3rem;
+    color: #447593;
+}
+
+/* Copyright */
+.copyright {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 1rem 0;
+    font-size: 0.8rem;
+    color: #17223F;
+    text-align: center;
+    width: 100%;
+    font-weight: 500;
+    background-color: #f2ece0;
+    z-index: 1000;
+}
+
+/* Theme Toggle Styles */
+.theme-toggle-container {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.theme-toggle-btn {
+    background: none;
+    border: 2px solid #17223F;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #17223F;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+    background-color: #17223F;
+    color: #f2ece0;
+}
+
+.theme-icon {
+    display: none;
+}
+
+/* Default light mode shows sun */
+body:not(.dark-mode) .light-icon {
+    display: inline-block;
+}
+
+/* Dark mode shows moon */
+body.dark-mode .dark-icon {
+    display: inline-block;
+}
+
+/* Dark Mode Variables & Styles */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #DFDFD9;
+}
+
+body.dark-mode .page-header,
+body.dark-mode .copyright {
+    background-color: #1a1a1a;
+    color: #DFDFD9;
+}
+
+body.dark-mode .header-info a {
+    color: #DFDFD9;
+}
+
+body.dark-mode .header-info h1 {
+    color: #DFDFD9; /* Eye-catching gray for title */
+}
+
+body.dark-mode .header-info p {
+    color: #aaa;
+}
+
+body.dark-mode .menu-btn span {
+    background-color: #DFDFD9;
+}
+
+body.dark-mode .menu-overlay {
+    background-color: rgba(26, 26, 26, 0.98);
+}
+
+body.dark-mode .menu-nav a {
+    color: #DFDFD9;
+}
+
+body.dark-mode .menu-nav a:hover {
+    color: #4a90e2; /* Accent color for dark mode */
+}
+
+body.dark-mode .theme-toggle-btn {
+    border-color: #DFDFD9;
+    color: #DFDFD9;
+}
+
+body.dark-mode .theme-toggle-btn:hover {
+    background-color: #DFDFD9;
+    color: #1a1a1a;
+}
+
+/* Article specific dark mode */
+body.dark-mode .article-content,
+body.dark-mode .article-sidebar-left {
+    background-color: #1a1a1a;
+    color: #DFDFD9;
+}
+
+body.dark-mode .article-content {
+    border-left-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .article-title,
+body.dark-mode .article-body h1,
+body.dark-mode .article-body h2,
+body.dark-mode .article-body h3 {
+    color: #DFDFD9;
+}
+
+body.dark-mode .article-meta {
+    color: #aaa;
+    border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .category-header,
+body.dark-mode .category-sub-list li a {
+    color: #DFDFD9;
+}
+
+body.dark-mode .category-sub-list li a:hover,
+body.dark-mode .category-sub-list li a.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+/* Dark Mode Search Box */
+body.dark-mode #wiki-search-input,
+body.dark-mode #wiki-search-input-mobile {
+    background-color: #333;
+    color: #DFDFD9;
+    border-color: #444;
+}
+
+body.dark-mode #wiki-search-input:focus,
+body.dark-mode #wiki-search-input-mobile:focus {
+    background-color: #1a1a1a;
+    border-color: #666;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode #wiki-search-results,
+body.dark-mode #wiki-search-results-mobile {
+    background: #2a2a2a;
+    border: 1px solid #444;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+body.dark-mode .search-result-item {
+    border-bottom: 1px solid #444;
+}
+
+body.dark-mode .search-result-item a {
+    color: #DFDFD9;
+}
+
+body.dark-mode .search-result-item a:hover {
+    background-color: #333;
+}
+
+body.dark-mode .search-result-title {
+    color: #DFDFD9;
+}
+
+body.dark-mode .search-result-snippet {
+    color: #aaa;
+}
+
+body.dark-mode .search-highlight {
+    background-color: rgba(255, 243, 205, 0.2);
+    color: #ffdf80;
+}
+
+body.dark-mode .search-loading, 
+body.dark-mode .search-error,
+body.dark-mode .search-no-results {
+    color: #aaa;
+}
+
+body.dark-mode .article-hero .hero-overlay {
+    background: linear-gradient(to top, rgba(26, 26, 26, 1) 0%, rgba(26, 26, 26, 0.9) 30%, rgba(26, 26, 26, 0.6) 60%, rgba(26, 26, 26, 0) 100%);
+    color: #DFDFD9;
+}
+
+body.dark-mode .article-hero .article-title {
+    color: #DFDFD9;
+}
+
+body.dark-mode .article-hero .article-meta {
+    color: #aaa;
+    border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Dark Mode Tables */
+body.dark-mode .article-body table th,
+body.dark-mode .article-body table td {
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #DFDFD9;
+}
+
+body.dark-mode .article-body table th {
+    border-bottom-color: rgba(255, 255, 255, 0.3);
+    color: #DFDFD9;
+}
+
+/* Dark Mode Details/Summary */
+body.dark-mode .article-body details {
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #ccc;
+}
+
+body.dark-mode .article-body details summary {
+    color: #DFDFD9;
+}
+
+body.dark-mode .article-body details[open] summary {
+    border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .article-body details .details-content {
+    color: #ccc;
+}
+
+/* Index specific dark mode */
+body.dark-mode .intro-box {
+    color: #DFDFD9;
+}
+
+/* Mobile Sidebar Dark Mode */
+body.dark-mode .mobile-sidebar-toggle {
+    color: #DFDFD9;
+}
+
+body.dark-mode .mobile-sidebar-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Right Sidebar TOC Dark Mode */
+body.dark-mode .toc-list a {
+    color: #aaa; /* Lighter than #666 but distinct from main text */
+}
+
+body.dark-mode .toc-list a:hover,
+body.dark-mode .toc-list a.active {
+    color: #DFDFD9;
+}
+
+@media (max-width: 800px) {
+    body.dark-mode .sidebar-inner {
+        background-color: rgba(26, 26, 26, 0.98);
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+}
+
+@media (min-width: 801px) {
+    body.dark-mode .sidebar-inner {
+        background-color: transparent;
+        box-shadow: none;
+    }
+}
+
+body.dark-mode .mobile-sidebar-close {
+    color: #aaa;
+}
+
+body.dark-mode .mobile-sidebar-close:hover {
+    color: #DFDFD9;
+}
+
+/* No Cover Article Header Dark Mode */
+body.dark-mode .article-header-no-cover .article-title {
+    color: #DFDFD9;
+}
+
+body.dark-mode .article-header-no-cover .article-meta {
+    color: #aaa;
+    border-bottom-color: rgba(223, 223, 217, 0.2);
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .page-header {
+        padding: 2rem;
+    }
+    .header-content {
+        padding: 0;
+    }
+}
+
+@media (max-width: 800px) {
+    .container {
+        grid-template-columns: 1fr !important; /* Force single column on mobile */
+        height: auto;
+        max-height: none;
+        overflow: visible;
+        gap: 3rem;
+        padding-bottom: 2rem;
+    }
+
+    body {
+        padding: 4rem 1rem 1rem 1rem;
+        height: auto;
+        display: block;
+    }
+    
+    .page-header {
+        padding: 1rem;
+    }
+    
+    .header-info h1, .header-info p {
+        margin-right: 0;
+    }
+
+    .copyright {
+        position: static;
+        margin-top: 2rem;
+    }
+}
