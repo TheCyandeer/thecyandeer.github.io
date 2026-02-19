@@ -19,10 +19,6 @@
     // 检查本地存储中的主题偏好
     var savedTheme = localStorage.getItem('theme');
     
-    // 如果没有存储偏好，默认使用浅色，或者可以检查系统偏好
-    // var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    // var currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
-    
     // 这里我们默认浅色，如果有保存则用保存的
     var currentTheme = savedTheme || 'light';
 

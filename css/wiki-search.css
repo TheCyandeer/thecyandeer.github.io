@@ -118,8 +118,6 @@
         display: block;
         padding: 0 0 15px 0;
         margin-bottom: 10px;
-        /* background-color: transparent; Remove header-style background */
-        /* border-bottom: none; Remove header-style border */
     }
     
     #wiki-search-input-mobile {
@@ -148,7 +146,7 @@
         overflow-y: auto;
         display: none;
         margin-top: 5px;
-        position: relative; /* Inside sidebar flow */
+        position: relative;
         z-index: 2001;
     }
 }

@@ -9,10 +9,8 @@
 .left-overlay-layer {
     grid-column: 1;
     grid-row: 1;
-    /* position: sticky; removed to allow scrolling */
-    /* top: 7rem; removed */
     height: fit-content;
-    z-index: 20; /* Layer: Top (main-a) */
+    z-index: 20;
     pointer-events: none;
     display: flex;
     flex-direction: column;
@@ -23,7 +21,6 @@
     height: 500px;
     margin-top: 1rem;
     position: relative;
-    /* This mimics .hero-image dimensions to position the overlay correctly */
 }
 
 .hero-overlay {
@@ -44,17 +41,15 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    /* position: sticky; removed to allow scrolling */
-    /* top: 7rem; removed */
     height: fit-content;
-    z-index: 1; /* Layer: Bottom (main-b) */
+    z-index: 1;
 }
 
 .hero-image {
     width: 122%;
     height: 500px;
     margin-top: 1rem;
-    background-color: transparent; /* Fixed empty value */
+    background-color: transparent;
     border-radius: 4px;
     position: relative;
 }
@@ -67,8 +62,6 @@
     display: block;
 }
 
-/* Remove old styles no longer needed */
-/* .hero-image .hero-overlay was removed */
 
 .intro-box {
     background-color: #447593;
@@ -141,7 +134,7 @@
 .right-hero .title-block,
 .right-hero .subtitle-block {
     position: relative;
-    z-index: 10; /* Ensure text is above carousel (z-index 5) */
+    z-index: 10;
 }
 
 .right-image {
@@ -151,7 +144,7 @@
     width: 121%;
     height: 500px;
     overflow: hidden;
-    z-index: 5; /* Layer: Middle (carousel) */
+    z-index: 5;
 }
 
 /* Underlay Image (rmain-0) */
@@ -163,7 +156,7 @@
     height: 100%;
     object-fit: contain;
     object-position: bottom center;
-    z-index: -1; /* Place behind carousel images */
+    z-index: -1;
     display: block;
 }
 

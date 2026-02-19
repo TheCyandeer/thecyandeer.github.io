@@ -3,29 +3,23 @@
     const tocContainer = document.querySelector('.toc-list');
     if (!tocContainer) return;
 
-    // 1. 初始化折叠功能
-    // 找到所有有子菜单的 li
     const parentItems = tocContainer.querySelectorAll('li');
     
     parentItems.forEach(item => {
         const subList = item.querySelector('ul');
         if (subList) {
-            // 添加箭头图标
             const arrow = document.createElement('span');
             arrow.className = 'toc-arrow';
-            arrow.innerHTML = '▶'; // 使用实心三角
+            arrow.innerHTML = '▶';
             
-            // 插入到链接后面
             const link = item.querySelector('a');
             if (link) {
                 link.parentNode.insertBefore(arrow, link.nextSibling);
                 
-                // 点击箭头切换折叠状态
                 arrow.addEventListener('click', (e) => {
-                    e.stopPropagation(); // 防止冒泡
+                    e.stopPropagation();
                     item.classList.toggle('open');
                     
-                    // 旋转箭头
                     if (item.classList.contains('open')) {
                         arrow.style.transform = 'rotate(90deg)';
                     } else {
@@ -42,13 +36,8 @@
     // 获取所有目录对应的章节标题元素
     tocLinks.forEach(link => {
         const id = link.getAttribute('href');
-        // 只处理内部锚点
         if (id && id.startsWith('#')) {
-            // 处理 ID 中可能包含的特殊字符（Markdown生成ID时可能会有）
             try {
-                // 如果ID包含中文或其他特殊字符，querySelector可能需要转义，但在href中通常是编码过的或者直接ID
-                // 这里假设href直接对应id
-                // 注意：decodeURIComponent 用于处理编码过的URL
                 const targetId = decodeURIComponent(id).substring(1);
                 const section = document.getElementById(targetId);
                 
@@ -78,9 +67,6 @@
             if (item.section.offsetTop <= scrollPos) {
                 currentSection = item;
             } else {
-                // 因为章节是顺序的，一旦超过，后面的都不用看了
-                // 但为了保险（布局可能复杂），还是遍历或者倒序遍历比较好
-                // 这里用顺序遍历找最后一个满足条件的
             }
         }
 
@@ -102,9 +88,6 @@
                 }
             } else {
                 item.link.classList.remove('active');
-                // 不自动折叠，保持用户展开的状态，或者只保留当前的？
-                // 通常只展开当前的比较清爽，但如果用户手动展开了其他，也不要强制关掉
-                // 这里暂不自动关闭
             }
         });
 
@@ -149,7 +132,7 @@
             scrollPercent = Math.round((scrollTop / docHeight) * 100);
         }
         
-        // --- Desktop Logic ---
+        // --- 桌面模式 ---
         if (progressContainer && progressText && rocketIcon) {
             // 显示逻辑：开始滚动后显示
             if (scrollTop > 100) {
@@ -173,7 +156,7 @@
 
         // --- Mobile Logic ---
         if (progressContainerMobile && progressTextMobile && rocketIconMobile) {
-            // 显示逻辑：开始滚动后显示 (Same threshold as desktop)
+            // 显示逻辑：开始滚动后显示
             if (scrollTop > 100) {
                 progressContainerMobile.classList.add('visible');
             } else {
@@ -184,10 +167,10 @@
             if (scrollPercent >= 98 || (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
                 progressTextMobile.style.display = 'none';
                 rocketIconMobile.style.display = 'inline';
-                progressContainerMobile.classList.add('show-rocket'); // Reuse same class for style if needed, or just logic
+                progressContainerMobile.classList.add('show-rocket');
             } else {
                 progressTextMobile.innerText = scrollPercent + '%';
-                progressTextMobile.style.display = 'inline'; // Ensure text is visible
+                progressTextMobile.style.display = 'inline';
                 rocketIconMobile.style.display = 'none';
                 progressContainerMobile.classList.remove('show-rocket');
             }
@@ -299,40 +282,31 @@
     codeBlocks.forEach(code => {
         const pre = code.parentElement;
         
-        // Check if line numbers already exist
         if (pre.querySelector('.line-numbers')) return;
         
-        // Count lines
         const text = code.innerText;
-        // Split by newline, but careful with trailing newline often present in <pre>
         let lines = text.split('\n');
         
-        // If the last line is empty (common in pre), ignore it for numbering
         if (lines.length > 0 && lines[lines.length - 1] === '') {
             lines.pop();
         }
         
         const lineCount = lines.length;
         
-        // If single line, maybe don't show numbers? Or always show? 
-        // User asked to add line numbers, usually implies always.
-        
         const lineNumbersWrapper = document.createElement('div');
         lineNumbersWrapper.className = 'line-numbers';
         
-        // Generate spans for each line number
         let spans = '';
         for (let i = 1; i <= lineCount; i++) {
             spans += `<span>${i}</span>`;
         }
         lineNumbersWrapper.innerHTML = spans;
         
-        // Insert before code
         pre.insertBefore(lineNumbersWrapper, code);
     });
 })();
 
-// Mobile Sidebar Toggle Logic
+// 手机模式工具栏
 (function() {
     const toggleBtn = document.getElementById('mobile-sidebar-toggle');
     const closeBtn = document.getElementById('mobile-sidebar-close');
@@ -341,23 +315,21 @@
     if (toggleBtn && sidebarInner) {
         toggleBtn.addEventListener('click', function() {
             sidebarInner.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            document.body.style.overflow = 'hidden';
         });
     }
     
     if (closeBtn && sidebarInner) {
         closeBtn.addEventListener('click', function() {
             sidebarInner.classList.remove('active');
-            document.body.style.overflow = ''; // Restore scrolling
+            document.body.style.overflow = '';
         });
     }
-    
-    // Close sidebar when clicking a link inside it (on mobile)
+
     if (sidebarInner) {
         const links = sidebarInner.querySelectorAll('a');
         links.forEach(link => {
             link.addEventListener('click', function() {
-                // Only if on mobile (check if toggle is visible or just check window width)
                 if (window.getComputedStyle(toggleBtn).display !== 'none') {
                      sidebarInner.classList.remove('active');
                      document.body.style.overflow = '';
@@ -372,7 +344,6 @@
     const codeBlocks = document.querySelectorAll('.article-body pre');
     
     codeBlocks.forEach(pre => {
-        // Check if button already exists (to prevent duplicates if script runs multiple times)
         if (pre.querySelector('.copy-btn')) return;
 
         // 创建复制按钮
@@ -405,7 +376,6 @@
                 }, 2000);
             } catch (err) {
                 console.error('Failed to copy:', err);
-                // Fallback for older browsers
                 const textarea = document.createElement('textarea');
                 textarea.value = text;
                 document.body.appendChild(textarea);
