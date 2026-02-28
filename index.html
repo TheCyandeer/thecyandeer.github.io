@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>引入页 - 青鹿小茶馆</title>
+    <style>
+        /* 全局样式重置和基础设置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 页面主体样式 */
+        body {
+            background-color: #f2ece0;
+            color: #17223F;
+            font-family: "Source Han Serif CN", "思源宋体 CN Heavy", serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* 内容容器，所有内容居中放置 */
+        .content-container {
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        /* 头像框样式 */
+        .avatar-img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            object-fit: cover;
+            border: 8px solid #ffffff;
+            box-shadow: 0 4px 12px rgba(23, 34, 63, 0.1);
+        }
+
+        /* 文字样式 */
+        .text-line1 {
+            font-size: 32px;
+            margin-bottom: 6px;
+            font-weight: 900;
+        }
+
+        .text-line2 {
+            font-size: 18px;
+            margin-bottom: 35px;
+            opacity: 0.9;
+        }
+
+        /* 按钮样式 */
+        .enter-btn {
+            background-color: #17223F;
+            color: #f2ece0;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 36px;
+            font-size: 16px;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .enter-btn:hover {
+            background-color: #0f1829;
+        }
+
+        /* 兼容不同浏览器的思源宋体 */
+        @font-face {
+            font-family: "Source Han Serif CN";
+            font-weight: 900;
+            src: local("Source Han Serif CN Heavy"),
+                 local("思源宋体 CN Heavy"),
+                 url("https://cdn.bootcdn.net/ajax/libs/source-han-serif-cn/1.001R/SourceHanSerifCN-Heavy.otf") format("opentype");
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <!-- 头像图片 -->
+        <img src="https://files.seeusercontent.com/2026/02/25/jO9u/640b37525eb453787ade83b55896b5b7.jpg" 
+             alt="花下青鹿的头像" 
+             class="avatar-img">
+        <!-- 文字内容 -->
+        <div class="text-line1">我是花下青鹿</div>
+        <div class="text-line2">欢迎你来茶馆做客</div>
+        <!-- 跳转按钮 -->
+        <a href="https://www.thecyandeer.com/">
+            <button class="enter-btn">点击进入</button>
+        </a>
+    </div>
+</body>
+</html>
